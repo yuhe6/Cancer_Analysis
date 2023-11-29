@@ -18,20 +18,41 @@
     "href": "index.html#why-cancer",
     "title": "US Cancer Analysis",
     "section": "1.2 Why cancer?",
-    "text": "1.2 Why cancer?\nSome personal story related to cancer and the long term effects it has and the way it is impacting the world at a faster pace.\nOther than that, we can say things like - Cancer datasets contain a vast amount of complex information.. which includes demographic details, genetic data, treatment outcomes etc. Visualization simplifies the communication of this information, making it easier for a larger audience, including healthcare professionals, researchers, policymakers, and the general public, to understand key insights."
+    "text": "1.2 Why cancer?\nOther than that, we can say things like - Cancer datasets contain a vast amount of complex information.. which includes demographic details, genetic data, treatment outcomes etc. Visualization simplifies the communication of this information, making it easier for a larger audience, including healthcare professionals, researchers, policymakers, and the general public, to understand key insights.\nHey There! I just changed this.."
+  },
+  {
+    "objectID": "data.html",
+    "href": "data.html",
+    "title": "2  Data Source 1",
+    "section": "",
+    "text": "3 Data Source 2"
   },
   {
     "objectID": "data.html#description",
     "href": "data.html#description",
-    "title": "2  Data",
+    "title": "2  Data Source 1",
     "section": "2.1 Description",
     "text": "2.1 Description"
   },
   {
     "objectID": "data.html#missing-value-analysis",
     "href": "data.html#missing-value-analysis",
-    "title": "2  Data",
+    "title": "2  Data Source 1",
     "section": "2.2 Missing value analysis",
-    "text": "2.2 Missing value analysis\n  2.1 Technical description\nIdentify one or more data sources (see II. D. above) that you propose to draw on for the project. For each, describe how the data are collected and by whom. Describe the format of the data, the frequency of updates, dimensions, and any other relevant information. Note any issues / problems with the data, either known or that you discover. Explain how you plan to import the data. Carefully document your sources with links to the precise data sources that you used. If that is not possible (for example if your data is not available online, then explain that clearly.)\n(suggested: 1 page)\n  2.2 Research plan\nExplain in detail how your data will enable you to answer your research questions from the introduction. \n(suggested: 1 page)\n 2.3 Missing value analysis\nDescribe any patterns you discover in missing values. If no values are missing, graphs should still be included showing that.\n(suggested: 2 graphs plus commentary)"
+    "text": "2.2 Missing value analysis"
+  },
+  {
+    "objectID": "data.html#description-1",
+    "href": "data.html#description-1",
+    "title": "2  Data Source 1",
+    "section": "3.1 Description",
+    "text": "3.1 Description"
+  },
+  {
+    "objectID": "data.html#missing-value-analysis-1",
+    "href": "data.html#missing-value-analysis-1",
+    "title": "2  Data Source 1",
+    "section": "3.2 Missing value analysis",
+    "text": "3.2 Missing value analysis"
   }
 ]
