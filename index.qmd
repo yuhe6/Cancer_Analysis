@@ -12,6 +12,4 @@ So, in a deeply personal sense, visualizing cancer data is about translating num
 
 ## Why cancer?
 
-Some personal story related to cancer and the long term effects it has and the way it is impacting the world at a faster pace.
-
 Other than that, we can say things like - Cancer datasets contain a vast amount of complex information.. which includes demographic details, genetic data, treatment outcomes etc. Visualization simplifies the communication of this information, making it easier for a larger audience, including healthcare professionals, researchers, policymakers, and the general public, to understand key insights.
