@@ -7,6 +7,20 @@
     "text": "1 Introduction"
   },
   {
+    "objectID": "index.html#why-did-we-think-of-this-problem-statement-and-in-particular-cancer",
+    "href": "index.html#why-did-we-think-of-this-problem-statement-and-in-particular-cancer",
+    "title": "US Cancer Analysis",
+    "section": "1.1 Why did we think of this problem statement and in particular “Cancer”?",
+    "text": "1.1 Why did we think of this problem statement and in particular “Cancer”?\nFor us, the dataset is not just statistics but the journeys of real individuals, families, and communities and we want visualization to breathe life into these numbers, unveiling patterns and nuances that might otherwise remain hidden to all.\nFor us, it’s personal because every data point represents a person - a mother, a brother, a friend—affected by cancer. Visualization isn’t just about making sense of information, it’s about understanding the human stories behind the data. It’s about identifying trends that could mean the difference between early detection and missed opportunities, between effective interventions and overlooked disparities.\nVisualizations become a bridge between the scientific and the personal. They help us comprehend the impact of cancer on diverse populations, guiding healthcare decisions, policy changes, and individual choices. They empower individuals to take charge of their health by understanding risks and adopting preventive measures.\nSo, in a deeply personal sense, visualizing cancer data is about translating numbers into narratives, empowering individuals with knowledge, and ultimately striving for a world where fewer stories are marked by the challenges posed by cancer."
+  },
+  {
+    "objectID": "index.html#why-cancer",
+    "href": "index.html#why-cancer",
+    "title": "US Cancer Analysis",
+    "section": "1.2 Why cancer?",
+    "text": "1.2 Why cancer?\nSome personal story related to cancer and the long term effects it has and the way it is impacting the world at a faster pace.\nOther than that, we can say things like - Cancer datasets contain a vast amount of complex information.. which includes demographic details, genetic data, treatment outcomes etc. Visualization simplifies the communication of this information, making it easier for a larger audience, including healthcare professionals, researchers, policymakers, and the general public, to understand key insights."
+  },
+  {
     "objectID": "data.html#description",
     "href": "data.html#description",
     "title": "2  Data",
@@ -18,6 +32,6 @@
     "href": "data.html#missing-value-analysis",
     "title": "2  Data",
     "section": "2.2 Missing value analysis",
-    "text": "2.2 Missing value analysis"
+    "text": "2.2 Missing value analysis\n  2.1 Technical description\nIdentify one or more data sources (see II. D. above) that you propose to draw on for the project. For each, describe how the data are collected and by whom. Describe the format of the data, the frequency of updates, dimensions, and any other relevant information. Note any issues / problems with the data, either known or that you discover. Explain how you plan to import the data. Carefully document your sources with links to the precise data sources that you used. If that is not possible (for example if your data is not available online, then explain that clearly.)\n(suggested: 1 page)\n  2.2 Research plan\nExplain in detail how your data will enable you to answer your research questions from the introduction. \n(suggested: 1 page)\n 2.3 Missing value analysis\nDescribe any patterns you discover in missing values. If no values are missing, graphs should still be included showing that.\n(suggested: 2 graphs plus commentary)"
   }
 ]
