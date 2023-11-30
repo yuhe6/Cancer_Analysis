@@ -2,7 +2,7 @@
 
 ## Why did we think of this problem statement and in particular about "Cancer"?
 
-For us, a dataset is not just a collection of statistics; it is a tapestry woven with the stories of real individuals, families, and communities. We believe in the power of visualization to breathe life into these seemingly abstract numbers, revealing patterns and nuances that might otherwise remain concealed.
+For us, a dataset is not just a collection of statistics, it is a tapestry woven with the stories of real individuals, families, and communities. We believe in the power of visualization to breathe life into these seemingly abstract numbers, revealing patterns and nuances that might otherwise remain concealed.
 
 Why is it personal for us? Because every data point represents a person—a mother, a brother, a friend—whose life has been touched by cancer. Visualization, in our eyes, is not merely a tool for making sense of information; it is a vehicle for understanding the profoundly human stories that lie behind the data. It's about acknowledging that these numbers are not just clinical entries but narratives of resilience, struggle, and hope.
 
