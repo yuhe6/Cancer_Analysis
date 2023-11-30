@@ -1,6 +1,40 @@
-# Data Source 1
+# Data Source 1: United States Cancer Statistics
 
-## Description
+## 1. D1: Cancer Incidence (weblink):
+
+What is the datasource all about?
+
+-   Cancer incidence data are available for the United States, state and metropolitan areas (MSA) by age group, race, sex, ethnicity, year of diagnosis, childhood cancer classifications and cancer site for the years 1999 - 2020. Cancer incidence data are available for Puerto Rico by age group, sex, year of diagnosis, childhood cancer classifications and cancer site for the years 2005 - 2020. 
+
+Source of the dataset?
+
+All data are provided by CDC offices , healthcare practitioner and other agencies.
+
+The [United States Cancer Statistics](https://www.cdc.gov/cancer/uscs) (USCS) are the official federal statistics on cancer incidence from registries having high-quality data and cancer mortality statistics for 50 states and the District of Columbia. USCS are produced by the Centers for Disease Control and Prevention (CDC) and the National Cancer Institute (NCI). For a list of all USCS contributors and partners, visit [USCS Contributors](http://www.cdc.gov/cancer/uscs/technical_notes/contributors/).
+
+Data are provided by: 
+
+-   The Centers for Disease Control and Prevention [National Program of Cancer Registries (NPCR)](http://www.cdc.gov/cancer/npcr/)
+
+-   The National Cancer Institute [Surveillance, Epidemiology and End Results (SEER)](http://seer.cancer.gov/about/) program
+
+Data for years 1999-2020 are provided as reported to NPCR and SEER in the 2022 data submission, released 2023.
+
+Data collection?
+
+1.  There are two ways to collect the data :
+
+    a\. Downloading (export) -\> We can download the datasets in multiple formats ex. .txt or .xml
+
+    b\. API usuage:
+
+Format of the data and dimensions of the data:
+
+Frequently updated?
+
+Are there any formulas used in the dataset?
+
+The data source name is United States Cancer Statistics from <https://wonder.cdc.gov/cancer.html>, and there four datasets are: Cancer Incidence 1999 - 2020, Cancer Mortality 1999 - 2020, Cancer Mortality Incidence Rate Ratios 1999 - 2020, and National Program of Cancer Registries 5 year Relative Survival.
 
 ## Missing value analysis
 
