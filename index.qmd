@@ -1,6 +1,6 @@
 # Introduction
 
-## Why did we think of this problem statement and in particular "Cancer"?
+## Why did we think of this problem statement and in particular about "Cancer"?
 
 For us, a dataset is not just a collection of statistics; it is a tapestry woven with the stories of real individuals, families, and communities. We believe in the power of visualization to breathe life into these seemingly abstract numbers, revealing patterns and nuances that might otherwise remain concealed.
 
