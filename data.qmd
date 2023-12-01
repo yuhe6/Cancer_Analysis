@@ -1,16 +1,10 @@
-# Data Source 1: United States Cancer Statistics
+# Data Source: United States Cancer Statistics
 
-## 1. D1: Cancer Incidence (https://wonder.cdc.gov/cancer-v2020.HTML):
+## 1. Dataset 1: Cancer Incidence (https://wonder.cdc.gov/cancer-v2020.HTML):
 
-What is the datasource all about?
-
--   Cancer incidence data are available for the United States, state and metropolitan areas (MSA) by age group, race, sex, ethnicity, year of diagnosis, childhood cancer classifications and cancer site for the years 1999 - 2020. Cancer incidence data are available for Puerto Rico by age group, sex, year of diagnosis, childhood cancer classifications and cancer site for the years 2005 - 2020. 
-
-Source of the dataset?
+In this dataset, data on cancer occurrence is accessible for the United States, including individual states and metropolitan areas (MSA), categorized by age group, race, gender, ethnicity, year of diagnosis, childhood cancer types, and cancer site spanning from 1999 to 2020. Similarly, cancer incidence information for Puerto Rico is accessible, categorized by age group, gender, year of diagnosis, childhood cancer classifications, and cancer site from 2005 to 2020.
 
 All data are provided by CDC offices , healthcare practitioner and other agencies.
-
-The [United States Cancer Statistics](https://www.cdc.gov/cancer/uscs) (USCS) are the official federal statistics on cancer incidence from registries having high-quality data and cancer mortality statistics for 50 states and the District of Columbia. USCS are produced by the Centers for Disease Control and Prevention (CDC) and the National Cancer Institute (NCI). For a list of all USCS contributors and partners, visit [USCS Contributors](http://www.cdc.gov/cancer/uscs/technical_notes/contributors/).
 
 Data are provided by: 
 
@@ -20,42 +14,83 @@ Data are provided by: 
 
 Data for years 1999-2020 are provided as reported to NPCR and SEER in the 2022 data submission, released 2023.
 
-Data collection?
+1.  There are two ways to collect the data :
+
+    a\. Exporting (download) -\> We can download the datasets in multiple formats ex. .txt or .xml
+
+    b\. CDC WONDER API: 
+The API only allows queries for national data. The response file not only supports the creation of the results table but also aids in re-populating the request form for WONDER. It includes labels, validations, and "caveat" messages that may be displayed to the end-user. Consequently, the response file offers a comprehensive view of the metadata supporting potential variable/value pairs for constructing a data request.
+
+Presently, the XML response file doesn't incorporate charts or maps. WONDER utilizes the data from this response file to generate input for charting and mapping functions after the user selects the chart or map tabs. To initiate this process, a POST request should be sent to the WONDER.cdc.gov web server. The first parameter is an XML document specifying the request criteria. The outcome of the request is returned as an XML document, encompassing the data table along with relevant caveats and footnotes. All data use restrictions are strictly enforced and apply to the provided data. The XML document that specifies the request has a specific format and valid parameters specific to each unique online database.
+
+1.  Exporting the dataset: .txt is expected to get downloaded. The data present in the the file is unstructured, which contains the entire web page history content. Parsing the unstructured data (.txt) will be experimented as a part of data ingestion/processing.
+2.  WONDER API: .xml is expected to get fetched with API methods. The XML file is structured and can be easily be converted into a csv file for further usage. This will be experimented with the data ingestion/processing pipeline.
+
+The dimensions of the dataset is variable as it depends on the query criteria which we form. 
+Ex. Query Criteria: 
+Group By: Cancer Sites 
+Calculate Rates Per: 100,000 
+Standard Population: 2000 U.S. Std. Million
+
+Dimension: Columns :- (Cancer Sites, Count)
+
+But it will change for the cases where the query criteria may change.
+
+Ex. Query criteria: 
+Group By: Cancer Sites; 
+Region Show Totals: Disabled 
+Calculate Rates Per: 100,000 
+Standard Population: 2000 U.S. Std. Million
+
+Dimensions: Columns :- (Cancer Sites, Region, Count, Population, Age-Adjusted Rate Per 100,000, Crude Rate Per 100,000)
+
+The CDC WONDER database is frequently updated time to time annualy but the dataset which we are referring - United States and Puerto Rico Cancer Statistics, 1999-2020 Incidence Results is limited to the year range of 1999 to 2020.
+
+We will be using API calls to fetch the real time dataset by providing QUERY CRITERIA as a request to the server and recieving XML file in return which futher have to be processed in data ingestion pipeline.
+
+## 2. Dataset 2: Cancer Mortality (https://wonder.cdc.gov/cancermort-v2020.HTML https://wonder.cdc.gov/cancermir-v2020.HTML)
+
+Mortality data related to cancer can be accessed for the United States, individual states, and metropolitan areas (MSA), categorized by age group, race, ethnicity, gender, and cancer site spanning from 1999 to 2020. Similarly, data for Puerto Rico is available, categorized by age group, gender, and cancer site for the years 2005 to 2020.
+	
+The United States Cancer Statistics (USCS) are the official federal statistics on cancer incidence and mortality from registries having high-quality data and cancer mortality statistics for 50 states and the District of Columbia. USCS are produced by the Centers for Disease Control and Prevention (CDC) and the National Cancer Institute (NCI), in collaboration with the North American Association of Central Cancer Registries (NAACCR).
+
+Mortality data are provided by the Centers for Disease Control and Prevention (CDC), National Center for Health Statistics (NCHS), National Vital Statistics System (NVSS).
 
 1.  There are two ways to collect the data :
 
-    a\. Downloading (export) -\> We can download the datasets in multiple formats ex. .txt or .xml
+    a\. Exporting (download) -\> We can download the datasets in multiple formats ex. .txt or .xml
 
-    b\. CDC WONDER API: Only national data are available for query by the API. The data response page includes more information about the possible request parameters for the specific online database. The response file contains information that supports both drawing the results table and also re-populating the request form for WONDER, including labels, validations and "caveat" messages that may be displayed to the end-user. Thus the response file may give you a broader sense of the metadata that supports possible variable/value pairs in forming a potential data request. Currently, this XML response file doesn't have charts or maps. WONDER uses the data in this response file to generate the input to the charting and mapping functions, after the user clicks on the chart or map tabs. Send a POST request to the WONDER.cdc.gov web server. The first parameter is the contents of an XML document specifying the request criteria. Consent to abide by the data use restrictions is required, and can be included in the string that is passed as the 1st parameter, or can be passed as optional second parameter. The result of the request will be returned as an XML document. The results include the data table and applicable caveats and footnotes. All data use restrictions are enforced and apply to these data.
+    b\. CDC WONDER API: 
+The API only allows queries for national data. The response file not only supports the creation of the results table but also aids in re-populating the request form for WONDER. It includes labels, validations, and "caveat" messages that may be displayed to the end-user. Consequently, the response file offers a comprehensive view of the metadata supporting potential variable/value pairs for constructing a data request.
 
-The XML document that specifies the request has a specific format and valid parameters specific to each unique online database.
+Presently, the XML response file doesn't incorporate charts or maps. WONDER utilizes the data from this response file to generate input for charting and mapping functions after the user selects the chart or map tabs. To initiate this process, a POST request should be sent to the WONDER.cdc.gov web server. The first parameter is an XML document specifying the request criteria. The outcome of the request is returned as an XML document, encompassing the data table along with relevant caveats and footnotes. All data use restrictions are strictly enforced and apply to the provided data. The XML document that specifies the request has a specific format and valid parameters specific to each unique online database.
 
-Format of the data and dimensions of the data:
+1.  Exporting the dataset: .txt is expected to get downloaded. The data present in the the file is unstructured, which contains the entire web page history content. Parsing the unstructured data (.txt) will be experimented as a part of data ingestion/processing.
+2.  WONDER API: .xml is expected to get fetched with API methods. The XML file is structured and can be easily be converted into a csv file for further usage. This will be experimented with the data ingestion/processing pipeline.
 
-1.  Exporting the dataset: .txt is expected to get downloaded. The data present in the the file is unstructured comma seperated which contains the entire web page history content. Parsing the unstructured data (.txt) will be experimented as a part of data ingestion/processing.
-2.  WONDER API: .xml is expected to get fetched (by REQUEST API method). The XML file is structured and can be easily be converted into a csv file for further usage. This will be experimented with the data ingestion/processing pipeline.
+The dimensions of the dataset is variable as it depends on the query criteria which we form. 
+Ex. Query Criteria: 
+Group By:	Cancer Sites; Region
+Calculate Rates Per:	100,000
+Standard Population:	2000 U.S. Std. Million
+Dimension: Columns :- (Cancer Sites, Region, Year, Count)
 
-Comments on the dimensions of the data:
+But it will change for the cases where the query criteria may change.
 
-1.  The dimensions of the dataset is variable as it depends on the query criteria which we form. Ex. Query Criteria: Group By: Cancer Sites Show Totals: Disabled Show Zero Values: False Show Suppressed: False Calculate Rates Per: 100,000 Standard Population: 2000 U.S. Std. Million
+Ex. Query criteria: 
+Group By:	Cancer Sites; Region
+Calculate Rates Per: 100,000
+Standard Population: 2000 U.S. Std. Million
 
-Dimentions: Columns :- (Cancer Sites, Count)
+Dimensions: Columns :- (Cancer Sites, Region, Deaths)
 
-and for query criteria: Group By: Cancer Sites; Region Show Totals: Disabled Show Zero Values: True Show Suppressed: True Calculate Rates Per: 100,000 Standard Population: 2000 U.S. Std. Million
+The CDC WONDER database is frequently updated time to time annualy but the dataset which we are referring - United States and Puerto Rico Cancer Statistics, 1999-2020 Incidence Results is limited to the year range of 1999 to 2020.
 
-Dimentions: Columns :- (Cancer Sites, Region, Count, Population, Age-Adjusted Rate Per 100,000, Crude Rate Per 100,000)
+We will be using API calls to fetch the real time dataset by providing QUERY CRITERIA as a request to the server and recieving XML file in return which futher have to be processed in data ingestion pipeline.
 
-Frequently updated? The CDC WONDER database is frequently updated time to time (\~\~\~ 3 months) but the dataset which we are referring - United States and Puerto Rico Cancer Statistics, 1999-2020 Incidence Results is limited to the year range of 1999 to 2020, of which the dataset is collected.
+## Dataset 3: Cancer types and demographics (https://wonder.cdc.gov/cancer-v2020.HTML, https://wonder.cdc.gov/cancermort-v2020.HTML https://wonder.cdc.gov/cancermir-v2020.HTML)
 
-Importing dataset:
-
-We will be using API calls to fetch the real time dataset by providing QUERY CRITERIA as REQUEST to the server and recieving xml file in return which futher have to be processed in data ingestion pipeline.
-
-https://wonder.cdc.gov/cancermort-v2020.HTML https://wonder.cdc.gov/cancermir-v2020.HTML
-
-Cancer types and demographics:
-
-Ideally, our use case is follows are criterion to move ahead and visulize the cancer types vs. demographics. WONDER CDC filtered right way will provide us a grouped dataset. We have targetted to work on the following cases:
+In an ideal scenario, our use case involves meeting specific criteria to proceed and visualize the correlation between cancer types and demographics. By utilizing the filtered data from WONDER CDC, we can promptly obtain a grouped dataset. Our focus is directed towards addressing the following cases:
 
 1.  Cancer Types Grouped by Race and Ethnicity,
 
@@ -69,13 +104,21 @@ Ideally, our use case is follows are criterion to move ahead and visulize the ca
 
 6.  Cancer Types Grouped by County
 
-7.  The dimensions of the dataset is variable as it depends on the query criteria which we form. Ex. Query Criteria: Group By: Cancer Sites; Region; State Show Totals: Disabled Show Zero Values: True Show Suppressed: True Calculate Rates Per: 100,000 Standard Population: 2000 U.S. Std. Million
+The dimensions of the dataset is variable as it depends on the query criteria which we form. 
+Ex. Query Criteria: 
+Group By: Cancer Sites; Region; State
+Calculate Rates Per: 100,000 
+Standard Population: 2000 U.S. Std. Million
 
-Dimentions: Columns :- (Cancer Sites, Race, Ethnicity, Count)
+Dimensions: Columns :- (Cancer Sites, Race, Ethnicity, Count)
 
-and for query criteria: Group By: Cancer Sites; Region Show Totals: Disabled Show Zero Values: True Show Suppressed: True Calculate Rates Per: 100,000 Standard Population: 2000 U.S. Std. Million
+For query criteria: 
+Group By: Cancer Sites; Region 
+Show Totals: Disabled
+Calculate Rates Per: 100,000 
+Standard Population: 2000 U.S. Std. Million
 
-Dimentions: Columns :- (Cancer Sites, Region, State, Count)
+Dimensions: Columns :- (Cancer Sites, Region, State, Count)
 
 ## Missing value analysis:
 
@@ -93,16 +136,38 @@ f.  Ethnicity data are also suppressed for residents of North Dakota and Wiscons
 
 Additonally, states decide whether to suppress data for specific race and ethnicity categories.
 
-The suppression is a major challenge for our vizualization task as a potential information loss leads to misleading graphics and insights. Further, granularity of the dataset matters for use case as we are trying to vision any common norms or trends in the dataset from 1999 to 2020. Even if a threshold is being decided by the data provider, it will lead us to smaller dataset with limited feature access, as we will be dealing largely with demographical questions. #bias - to be included
+Overcoming the challenge of suppression is paramount in our visualization task, as the potential loss of information can result in deceptive graphics and misguided insights. The granularity of the dataset holds crucial significance for our use case, where we aim to discern common norms or trends spanning from 1999 to 2020. Any predetermined threshold set by the data provider may restrict our access to features, particularly in addressing demographical questions. The inclusion of bias underscores the need to confront and account for biases in our analysis.
 
-This request produces 193,036 rows, but 75,000 is the maximum allowed. Simplify this request, or send a series of smaller ones. For example, group results by race but limit each query to a single race. Send a request for each race group and then merge the results. Please contact user support for further assistance.
+2. The presence of "Unknown or Missing" values in column indicators poses a substantial hindrance to our research. Such occurrences can misdirect the research, introduce bias, and potentially yield incomplete or skewed conclusions. The prevalence of these values is widespread across various query criteria, amplifying the challenge.
 
-2.  Indication of "Unknown or Missing" values in the column This typically creates an obstacle in our research as ideally it will lead the research in the wrong direction, create bias or even have partial to no conclusion at the end. The frequency of "Unknown or Missing" values is large and common across most of the query criterias.
-
-3.  Indication of '0' values: For our use case, 0 indicates that for a certain group of people or regions or states have not experienced a cancer type, it completely goes against the norm of real world data because common formed pattern indicates that even if small amount, but people or regions or states do experience a type of cancer. This issue will create a lot of bias and instability in terms of visulization as one may even reach a wrong analysis or conclusion.
+3. Highlighting '0' values introduces a significant concern for our use case. In our real-world context, a complete absence of a particular cancer type within a group of people, regions, or states contradicts common patterns. This anomaly threatens to introduce bias and instability in our visualizations, potentially leading to erroneous analyses or conclusions. Addressing this issue is pivotal for ensuring the accuracy and reliability of our findings.
 
 # **Research Plan:**
 
-We are planning to dig deeper into the problem statement by asking relevant questions in perspectivbe to the target audience, which will allow us to have a better clarity and a guided structure to the research. For us, the target audience is the union of healthy, disabled and non-healthy patients who may or may not be aware of the cancer and its consequences.
+Our approach involves delving more profoundly into the intricacies of the problem statement by posing pertinent questions tailored to the perspective of our target audience. This strategic inquiry aims to provide us with enhanced clarity and a well-directed framework for our research endeavors. In our context, the target audience encompasses a broad spectrum, including healthy individuals, those with disabilities, and individuals dealing with health issues. Importantly, this audience may vary in their awareness levels regarding cancer and its potential consequences. By engaging with this diverse audience, we seek to gain comprehensive insights that will inform and shape the trajectory of our research.
 
-1.  Has anyone discussed with their healthcare provider their personal cancer risk factors, and are they actively engaged in any preventive measures to reduce their risk based on the current cancer incidence and mortality rates in their region? Some may even not be aware of it. So, this question encourages individuals to reflect on their awareness of cancer risk factors and their proactive efforts in adopting preventive measures. It also opens the door for discussions about the importance of regular screenings, lifestyle choices, and other factors that can contribute to cancer prevention.Largely, this question falls in the category of Cancer Incidence and Mortality Rates, where we can Visualize the geographical distribution of cancer incidence and mortality rates across different states or regions in the USA and then we can provide use choropleth maps to show variations in cancer rates, helping to identify high-risk areas and guide targeted prevention efforts.2. We can ask the audience to think - Considering the diversity in the prevalence of different cancer types among various demographic groups, have you ever reflected on how your own demographics, such as age, gender, or ethnicity, might influence your awareness of specific cancer risks, and does this influence your approach to health and preventive measures?I asked this question because it encourages people to consider their own demographic factors in the context of cancer awareness and prevention. It basically opens up a conversation about personal health choices and the role that demographic considerations might play in shaping one's understanding of cancer risks and the importance of preventive measures.Largely, this question falls in the category of Cancer Types and Demographics, where we can explore the prevalence of different cancer types and their distribution across demographic factors (age, gender, ethnicity) and then we can create stacked bar charts or heatmaps to represent the incidence of various cancer types within different demographic groups, highlighting disparities and trends.3. Another question to ask the audience is - As you reflect on your own experiences and awareness, have you noticed any changes in how cancer is discussed or perceived over the years? How do you think these temporal trends in cancer rates might influence your attitudes towards regular screenings and health-conscious choices in your day-to-day life?Its very important to ask this question because it encourages people to consider their personal observations and experiences regarding the discourse around cancer over time. It prompts reflection on whether changing trends in cancer rates influence their perceptions and behaviors related to preventive healthcare practices.Largely, it falls in the category of Temporal Trends in Cancer Rates where we can analyze how cancer incidence and mortality rates have changed over time and develop time-series visualizations such as line charts or area charts to illustrate temporal trends, helping to identify patterns and the effectiveness of interventions.4. We can also ask them that - Have you ever reflected on your own approach to cancer screenings in the varying rates of detection methods? How do you stay informed about recommended screenings, and what steps do you take to ensure you are proactive about your health?Largely, this falls in the category of Cancer Screening and Detection Rates where we can visualize the rates of cancer screening and early detection methods and use bar charts or pie charts to depict the percentage of the population undergoing regular screenings for common cancers, highlighting areas where screening programs may need improvement.5. How about this question - Reflecting on your own health journey, how would you say your awareness of cancer survival rates and treatment outcomes has influenced your attitude towards seeking medical care and making informed decisions about your health? Are there specific experiences that have shaped your perspective on the importance of early detection and treatment effectiveness?Basically, these types of questions will invite people to consider how this awareness has impacted their approach to healthcare decisions and the significance they place on factors such as early detection and treatment effectiveness.Largely, this falls in the category of Survival Rates and Treatment Outcomes where we can assess the survival rates of cancer patients and outcomes based on different treatment approaches and (IDK) create Kaplan-Meier survival curves (not sure) or other visualizations to show the probability of survival over time, stratified by treatment methods and cancer types.6. In your own health journey or the experiences of those close to you, have you ever noticed or encountered disparities in cancer outcomes among different demographic groups? How do you think awareness of these disparities can influence our collective efforts to ensure equitable access to healthcare?Largely, this falls in the category of Cancer Health Disparities, where we can visualize disparities in cancer outcomes among different socioeconomic groups and maybe use socioeconomic indicators to create visualizations that highlight disparities in cancer incidence, survival rates, and access to treatment. (Have to decide)7. Other than these major questions, I was thinking of cases where we can dig deeper and visualize genetic mutations and variations associated with different cancer types (One solution can be to utilize genomic data visualizations such as mutation landscapes, Circos plots, or heatmaps to represent genomic alterations in different cancer types) or explore the accessibility and distribution of cancer care facilities (Create maps or scatter plots to visualize the geographical distribution of cancer care facilities and identify areas with limited access to specialized cancer care) or Risk Factors and Behavioral Patterns (like visualize the impact of lifestyle and behavioral factors on cancer incidence and use pie charts or bar charts to represent the proportion of cancer cases attributed to various risk factors, such as smoking, diet, and physical activity.)
+1.  Has anyone discussed with their healthcare provider their personal cancer risk factors, and are they actively engaged in any preventive measures to reduce their risk based on the current cancer incidence and mortality rates in their region? Some may even not be aware of it. 
+
+This question encourages individuals to reflect on their awareness of cancer risk factors and their proactive efforts in adopting preventive measures. It also opens the door for discussions about the importance of regular screenings, lifestyle choices, and other factors that can contribute to cancer prevention.Largely, this question falls in the category of Cancer Incidence and Mortality Rates, where we can Visualize the geographical distribution of cancer incidence and mortality rates across different states or regions in the USA and then we can provide use choropleth maps to show variations in cancer rates, helping to identify high-risk areas and guide targeted prevention efforts.
+
+2. We ask the audience to think - Considering the diversity in the prevalence of different cancer types among various demographic groups, have you ever reflected on how your own demographics, such as age, gender, or ethnicity, might influence your awareness of specific cancer risks, and does this influence your approach to health and preventive measures? We ask this question because it encourages people to consider their own demographic factors in the context of cancer awareness and prevention. 
+
+It basically opens up a conversation about personal health choices and the role that demographic considerations might play in shaping one's understanding of cancer risks and the importance of preventive measures.Largely, this question falls in the category of Cancer Types and Demographics, where we can explore the prevalence of different cancer types and their distribution across demographic factors (age, gender, ethnicity) and then we can create stacked bar charts or heatmaps to represent the incidence of various cancer types within different demographic groups, highlighting disparities and trends.
+
+3. Another question to ask the audience is - As you reflect on your own experiences and awareness, have you noticed any changes in how cancer is discussed or perceived over the years? How do you think these temporal trends in cancer rates might influence your attitudes towards regular screenings and health-conscious choices in your day-to-day life?
+
+Its very important to ask this question because it encourages people to consider their personal observations and experiences regarding the discourse around cancer over time. It prompts reflection on whether changing trends in cancer rates influence their perceptions and behaviors related to preventive healthcare practices.Largely, it falls in the category of Temporal Trends in Cancer Rates where we can analyze how cancer incidence and mortality rates have changed over time and develop time-series visualizations such as line charts or area charts to illustrate temporal trends, helping to identify patterns and the effectiveness of interventions.
+
+4. We also ask them that - Have you ever reflected on your own approach to cancer screenings in the varying rates of detection methods? How do you stay informed about recommended screenings, and what steps do you take to ensure you are proactive about your health?
+
+Largely, this falls in the category of Cancer Screening and Detection Rates where we can visualize the rates of cancer screening and early detection methods and use bar charts or pie charts to depict the percentage of the population undergoing regular screenings for common cancers, highlighting areas where screening programs may need improvement.
+
+5. Reflecting on your own health journey, how would you say your awareness of cancer survival rates and treatment outcomes has influenced your attitude towards seeking medical care and making informed decisions about your health? Are there specific experiences that have shaped your perspective on the importance of early detection and treatment effectiveness?
+
+Basically, these types of questions will invite people to consider how this awareness has impacted their approach to healthcare decisions and the significance they place on factors such as early detection and treatment effectiveness. 
+
+Largely, this falls in the category of Survival Rates and Treatment Outcomes where we can assess the survival rates of cancer patients and outcomes based on different treatment approaches and (IDK) create Kaplan-Meier survival curves (not sure) or other visualizations to show the probability of survival over time, stratified by treatment methods and cancer types.
+
+6. In your own health journey or the experiences of those close to you, have you ever noticed or encountered disparities in cancer outcomes among different demographic groups? How do you think awareness of these disparities can influence our collective efforts to ensure equitable access to healthcare? 
+
+Largely, this falls in the category of Cancer Health Disparities, where we visualize disparities in cancer outcomes among different socioeconomic groups and maybe use socioeconomic indicators to create visualizations that highlight disparities in cancer incidence, survival rates, and access to treatment.
