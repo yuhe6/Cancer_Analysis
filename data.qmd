@@ -124,8 +124,9 @@ Dimensions: Columns :- (Cancer Sites, Region, State, Count)
 
 1.  Suppresed dataset:
 
+```{=html}
 <!-- -->
-
+```
 a.  Data are suppressed if the figures represent fewer than 16 cases for the specific category in the output. This is not neccesary in our use case as more data leads to more crisp vizulization and ideally, we also want to find the common trends and factors which leads to fewer cases. But the dataset provider has their own conditions.
 b.  Counts and rates are suppressed for cells at the Metropolitan Statistical Area (MSA) level for the race categories "American Indian or Alaska Native" or "Asian or Pacific Islander" when the specific category's population for rate calculations is less than 50,000 persons.
 c.  Data are suppressed at the state and MSA level for certain race and ethnicity groups: American Indian or Alaska Native data are suppressed at the state and MSA level for residents of Illinois, Kansas, New Jersey, and New York;
