@@ -1,1 +1,18 @@
 # Results
+
+```{r}
+library(httr)
+api <- "https://wonder.cdc.gov/controller/datarequest/D76"
+response <- GET(url = api)
+
+if (http_status(response)$category == 'Success') {
+  cdc_daat <- content(response, 'parsed')
+  print('SUCCESSSSSS')
+}
+
+print(response)
+
+
+
+```
+
